@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Green's Assignment 3</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Load required libraries -->
+  <script src="lib/xlsx.full.min.js"></script>
+  <script src="lib/lodash.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="calendar-container" id="calendarContainer">
+      <h2 class="title">Team Green's Feature Release Rhythm Heat Calendar</h2>
+      
+      <!-- Summary statistics panel -->
+      <div class="summary-panel" id="summaryPanel">
+        <h3 class="summary-title">Feature Release Summary</h3>
+        <div class="summary-grid">
+          <div class="summary-item">
+            <h4 class="stat-label">Total Features</h4>
+            <p class="stat-value" id="totalFeatures">0</p>
+            <div class="app-breakdown" id="appBreakdown"></div>
+          </div>
+          
+          <div class="summary-item">
+            <h4 class="stat-label">Features by Year</h4>
+            <div class="year-stats" id="yearStats"></div>
+          </div>
+          
+          <div class="summary-item" id="categoriesContainer">
+            <h4 class="stat-label">Top Categories</h4>
+            <div class="category-stats" id="categoryStats"></div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Controls section -->
+      <div class="controls">
+        <div class="control-group">
+          <span class="control-label">View:</span>
+          <div class="button-group">
+            <button id="monthViewBtn" class="active">Month</button>
+            <button id="yearViewBtn">Year</button>
+          </div>
+        </div>
+        
+        <div class="control-group">
+          <span class="control-label">Application:</span>
+          <div class="button-group">
+            <button id="allAppsBtn" class="active app-btn-all">All</button>
+            <button id="zoomBtn" class="app-btn-zoom">Zoom</button>
+            <button id="firefoxBtn" class="app-btn-firefox">Firefox</button>
+            <button id="webexBtn" class="app-btn-webex">Webex</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Calendar view container -->
+      <div class="calendar-view">
+        <!-- Monthly view -->
+        <div id="monthlyView" class="view-container">
+          <div class="nav-bar">
+            <button id="prevMonthBtn" class="nav-btn">&larr;</button>
+            <h3 id="monthYearLabel" class="view-title">January 2022</h3>
+            <button id="nextMonthBtn" class="nav-btn">&rarr;</button>
+          </div>
+          
+          <div id="monthlyGrid" class="monthly-grid">
+            <!-- Month grid will be populated by JS -->
+          </div>
+          
+          <div id="dayFeaturesList" class="features-list-container hidden">
+            <!-- Day features will be populated by JS -->
+          </div>
+        </div>
+        
+        <!-- Yearly view -->
+        <div id="yearlyView" class="view-container hidden">
+          <div class="nav-bar">
+            <button id="prevYearBtn" class="nav-btn">&larr;</button>
+            <h3 id="yearLabel" class="view-title">2022</h3>
+            <button id="nextYearBtn" class="nav-btn">&rarr;</button>
+          </div>
+          
+          <div id="yearlyGrid" class="yearly-grid">
+            <!-- Year grid will be populated by JS -->
+          </div>
+          
+          <div id="monthFeaturesList" class="features-list-container hidden">
+            <!-- Month features will be populated by JS -->
+          </div>
+        </div>
+      </div>
+      
+      <!-- Legend -->
+      <div class="legend-container">
+        <h3 class="legend-title">Heat Intensity Legend</h3>
+        <div class="heat-legend">
+          <div class="heat-gradient" id="heatGradient"></div>
+          <span class="legend-label">More Features</span>
+        </div>
+        <p class="legend-description">
+          This visualization shows feature release intensity over time. Darker colors represent days with more feature releases.
+          <br>
+          Click on any day or month to see detailed information about the features released during that time period.
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Loading overlay -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loader"></div>
+    <p>Loading data...</p>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
